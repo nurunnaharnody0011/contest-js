@@ -62,3 +62,34 @@ if(sum===9 || difference===9 || product===9|| quotient===9){
 return "Nein";
 }
 
+function extractBodyContent(htmlString) {
+  let start = htmlString.split("<body>")[1];
+  let end = start.split("</body>")[0]
+  return(end)
+}
+// console.log(extractBodyContent(
+// `"<!DOCTYPE html>
+// <html>
+//   <body>
+//     <p>Hello world!</p>
+//     <div>
+//       <span>Nested content.</span>
+//     </div>
+//   </body>
+// </html>"`))
+
+
+function calculateRemainingMoney(totalMoney, cakeCost, donutCost) {
+
+
+  let remainingMoneyAfterBuyingCake = totalMoney-cakeCost;
+  if(remainingMoneyAfterBuyingCake<0){
+    return remainingMoneyAfterBuyingCake;
+  }
+  let donutICanBuy = Math.floor(remainingMoneyAfterBuyingCake/donutCost);
+  let remainingMoneyAfterBuyingDonut = donutICanBuy*donutCost;
+  let remainingMoney = remainingMoneyAfterBuyingCake-remainingMoneyAfterBuyingDonut;
+  return remainingMoney;
+}
+
+console.log(calculateRemainingMoney(50,30,7));
